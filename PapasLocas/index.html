@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Papas Locas</title>
+  <link rel="icon" type="icon" href="logo.jpg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; color: #333; }
+    header {
+      background: #c0392b;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      height: 60px;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    nav {
+      background: #e74c3c;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    nav a.active, nav a:hover {
+      background: #c0392b;
+    }
+    main { padding: 2rem; }
+    section { display: none; }
+    section.active { display: block; animation: fadeIn 0.3s ease-in; }
+    .card {
+      background: white;
+      border-radius: 5px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .product-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .product-grid .card {
+      flex: 1 1 calc(33% - 2rem);
+      text-align: center;
+    }
+    img.organigrama {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin: 1rem auto;
+      border-radius: 8px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (max-width: 768px) {
+      .product-grid .card {
+        flex: 1 1 100%;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header img {
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.jpg" alt="Logo Papas Locas" />
+  <h1>🥔 Papas Locas</h1>
+</header>
+
+<nav>
+  <a href="#" class="nav-link active" data-target="home">Principal</a>
+  <a href="#" class="nav-link" data-target="productos">Productos</a>
+  <a href="#" class="nav-link" data-target="atencion">Atención al cliente</a>
+  <a href="#" class="nav-link" data-target="organigrama">Organigrama</a>
+  <a href="#" class="nav-link" data-target="about">Acerca de nosotros</a>
+</nav>
+
+<main>
+  <section id="home" class="active">
+    <div class="card">
+      <h2>Bienvenidos a Papas Locas</h2>
+      <p>Disfruta de las papas más crujientes, atrevidas y sabrosas que jamás hayas probado.</p>
+      <p>Explora nuestro menú, conoce nuestra historia o contáctanos. ¡Estamos aquí para ti!</p>
+    </div>
+  </section>
+
+  <section id="productos">
+    <h2>Productos</h2>
+    <div class="product-grid">
+      <div class="card">
+        <div class="emoji">🍟</div>
+        <h3>Papas Clásicas</h3>
+        <p>Servidas con sal y nuestras salsas especiales.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🧀🥓</div>
+        <h3>Papas Cheddar</h3>
+        <p>Con queso fundido, tocino crujiente y cebollín.</p>
+      </div>
+      <div class="card">
+        <div class="emoji">🌶️🍖🍟</div>
+        <h3>Papas Locas Especiales</h3>
+        <p>Con carne al pastor, jalapeños y aderezo secreto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="atencion">
+    <div class="card">
+      <h2>Atención al Cliente</h2>
+      <p>📞 Teléfono: 555-123-4567</p>
+      <p>📧 Correo: contacto@papaslocas.com</p>
+      <p>📍 Dirección: Calle Sabrosa #123, Ciudad Sabor, México</p>
+      <p>🕐 Horario: Lunes a Domingo, 12:00 pm - 10:00 pm</p>
+    </div>
+  </section>
+
+  <section id="organigrama">
+    <div class="card">
+      <h2>Organigrama</h2>
+      <img src="organigrama.png" alt="Organigrama Papas Locas" class="organigrama">
+      <p>Nuestro equipo está formado por profesionales apasionados por la comida y el servicio de calidad. Desde cocina hasta atención al cliente, cada área contribuye a ofrecerte una experiencia deliciosa.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="card">
+      <h2>Acerca de Nosotros</h2>
+      <p>En <strong>Papas Locas</strong>, nos dedicamos a ofrecer papas con combinaciones únicas y atrevidas que despiertan tus sentidos. Empezamos como un emprendimiento familiar y crecimos gracias a tu preferencia.</p>
+      <p>Nos enorgullece usar ingredientes de calidad, atención personalizada y recetas originales para que cada visita sea inolvidable.</p>
+      <p>¡Gracias por ser parte de esta aventura crujiente!</p>
+    </div>
+  </section>
+</main>
+
+<script>
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('main section');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      const targetId = link.dataset.target;
+      sections.forEach(sec => {
+        sec.classList.toggle('active', sec.id === targetId);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
